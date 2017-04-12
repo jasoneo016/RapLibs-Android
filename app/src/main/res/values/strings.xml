@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Rap Libs</string>
+    <string-array name="array_lyrics" >
+        <item>Hermès link, ice-blue mink</item>
+        <item>I’m blem for real, I might just say how I feel</item>
+        <item>Free smoke, free smoke, ayy!</item>
+        <item>Kendall turned 21, was up the street with 21</item>
+        <item>Passionate from miles away, Passive with the things you say</item>
+        <item>I know I said top five, but I’m top two</item>
+        <item>Batman, Da-na-na-da-na!</item>
+    </string-array>
+</resources>
