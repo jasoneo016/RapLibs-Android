@@ -32,19 +32,19 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/drake"/>
+            android:src="@drawable/foresthillsdrive"/>
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/bigsean"/>
+            android:src="@drawable/bigseanidecided"/>
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/flocka"/>
+            android:src="@drawable/drakemorelife"/>
     </LinearLayout>
 
     <LinearLayout
@@ -72,19 +72,19 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/savage"/>
+            android:src="@drawable/drakeviews"/>
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/kanye"/>
+            android:src="@drawable/joeybadassallamerikkkanbadass"/>
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/takeoff"/>
+            android:src="@drawable/kendrickdamn"/>
 
     </LinearLayout>
 
@@ -95,19 +95,23 @@
         android:layout_weight="10">
 
         <Button
-            android:id="@+id/button3"
-            android:background="@android:color/holo_red_dark"
+            android:id="@+id/favoritesbutton"
+            android:background="@android:color/holo_blue_bright"
             android:textColor="@android:color/black"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="View Artists" />
+            android:layout_weight="1"
+            android:text="Favorites"/>
+
+        <Button
+            android:id="@+id/viewartistbutton"
+            android:background="@android:color/holo_red_dark"
+            android:textColor="@android:color/black"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="View Artists"
+            />
 
     </LinearLayout>
-
-    <!--<ListView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/listViewLyrics"-->
-        <!--android:layout_weight="1" />-->
-
 </LinearLayout>
