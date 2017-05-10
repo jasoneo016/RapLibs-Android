@@ -36,13 +36,12 @@ public class RecentFragment extends Fragment {
 
     private void initRecent() {
         favoritesList = new ArrayList<Favorites>() {{
-            add(new Favorites("Drake", "Hermès link, ice-blue mink", R.drawable.drakemorelife));
-            add(new Favorites("Drake", "I’m blem for real, I might just say how I feel", R.drawable.drakemorelife));
+            add(new Favorites("Big Sean", "All the shit you told me I believed", R.drawable.bigseanidecided));
+            add(new Favorites("Joey Badass", "It's just the way I feel", R.drawable.joeybadassallamerikkkanbadass));
             add(new Favorites("Drake", "Free smoke, free smoke, ayy!", R.drawable.drakemorelife));
-            add(new Favorites("Drake", "Kendall turned 21, was up the street with 21", R.drawable.drakemorelife));
-            add(new Favorites("Drake", "Passionate from miles away, Passive with the things you say", R.drawable.drakemorelife));
-            add(new Favorites("Drake", "I know I said top five, but I’m top two", R.drawable.drakemorelife));
-            add(new Favorites("Drake", "Batman, Da-na-na-da-na!", R.drawable.drakemorelife));
+            add(new Favorites("Drake", "Top 5 Top 5 Top 5", R.drawable.drakeviews));
+            add(new Favorites("J. Cole", "I came fast like 911 in white neighborhoods", R.drawable.foresthillsdrive));
+            add(new Favorites("Kendrick Lamar", "I got royalty got loyalty inside my DNA", R.drawable.kendrickdamn));
         }};
     }
 }
