@@ -1,0 +1,22 @@
+<tabs>
+    <tab
+        id="@+id/tab_home"
+        icon="@drawable/ic_home"
+        title="Home"
+        barColorWhenSelected="#26bff2"/>
+    <tab
+        id="@+id/tab_recent"
+        icon="@drawable/ic_recent"
+        title="Recent"
+        barColorWhenSelected="#f226f2"/>
+    <tab
+        id="@+id/tab_favorites"
+        icon="@drawable/ic_favorites"
+        title="Favorites"
+        barColorWhenSelected="#ffea00"/>
+    <tab
+        id="@+id/tab_artists"
+        icon="@drawable/ic_artists"
+        title="Artists"
+        barColorWhenSelected="#e11414"/>
+</tabs>

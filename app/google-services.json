@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "452887694859",
+    "firebase_url": "https://rap-libs.firebaseio.com",
+    "project_id": "rap-libs",
+    "storage_bucket": "rap-libs.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:452887694859:android:9947983351c826f3",
+        "android_client_info": {
+          "package_name": "cs499.cpp.edu.raplibs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "452887694859-a16a0k5jenpa52v28mqjub2f4qpb4053.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlXHnbWstQ_v-zFZ27hlNvAg3midO8bVM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

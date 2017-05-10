@@ -17,7 +17,7 @@ public class ArtistActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.listview_artists);
+        setContentView(R.layout.listview);
 
         initArtists();
 
@@ -31,13 +31,16 @@ public class ArtistActivity extends AppCompatActivity {
 
     private void initArtists() {
         artistList = new ArrayList<Artist>() {{
+
+            add(new Artist("Kendrick Lamar", R.drawable.kendricklamar));
             add(new Artist("Big Sean", R.drawable.bigsean));
             add(new Artist("Drake", R.drawable.drake));
-            add(new Artist("Waka Flocka Flame", R.drawable.flocka));
-            add(new Artist("Kanye West", R.drawable.kanye));
+            add(new Artist("Waka Flocka Flame", R.drawable.wakaflockaflame));
+            add(new Artist("Kanye West", R.drawable.kanyewest));
             add(new Artist("Offset", R.drawable.offset));
             add(new Artist("21 Savage", R.drawable.savage));
             add(new Artist("Takeoff", R.drawable.takeoff));
+
         }};
     }
 }

@@ -1,13 +1,15 @@
 package cs499.cpp.edu.raplibs;
 
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.SearchView;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.ArrayAdapter;
+import com.roughike.bottombar.BottomBar;
+import com.roughike.bottombar.OnTabSelectListener;
+import android.support.annotation.IdRes;
+import android.support.v4.app.Fragment;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 import android.widget.Button;
 import android.view.View;
 import android.content.Intent;
@@ -15,29 +17,41 @@ import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity {
 
+    private BottomBar bottomBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button favoritesButton = (Button) findViewById(R.id.favoritesbutton);
-        favoritesButton.setOnClickListener(new View.OnClickListener() {
+        bottomBar = (BottomBar) findViewById(R.id.bottomBar);
+        bottomBar.setDefaultTab(R.id.tab_home);
+        bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, FavoritesActivity.class);
-                startActivity(intent);
-            }
-        });
+            public void onTabSelected(@IdRes int tabId) {
 
-        Button artistButton = (Button) findViewById(R.id.viewartistbutton);
-        artistButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ArtistActivity.class);
-                startActivity(intent);
+                Fragment fragment = null;
+
+                switch (tabId) {
+                    case R.id.tab_home:
+                        fragment = new HomeFragment();
+                        break;
+                    case R.id.tab_recent:
+                        fragment = new RecentFragment();
+                        break;
+                    case R.id.tab_favorites:
+                        fragment = new FavoritesFragment();
+                        break;
+                    case R.id.tab_artists:
+                        fragment = new ArtistsFragment();
+                        break;
+                }
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, fragment).commit();
             }
+
         });
     }
+}
 
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
@@ -65,4 +79,3 @@ public class MainActivity extends AppCompatActivity {
 //
 //        return super.onCreateOptionsMenu(menu);
 //    }
-}

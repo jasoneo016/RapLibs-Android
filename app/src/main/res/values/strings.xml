@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Rap Libs</string>
-    <string-array name="array_lyrics" >
+    <string-array name="array_lyrics">
         <item>Hermès link, ice-blue mink</item>
         <item>I’m blem for real, I might just say how I feel</item>
         <item>Free smoke, free smoke, ayy!</item>
@@ -9,4 +9,7 @@
         <item>I know I said top five, but I’m top two</item>
         <item>Batman, Da-na-na-da-na!</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

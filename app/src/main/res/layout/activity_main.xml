@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/fragmentContainer"
     tools:context="cs499.cpp.edu.raplibs.MainActivity">
+
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="461dp"
+        android:orientation="vertical">
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal">-->
 
         <TextView
             android:textSize="24dp"
@@ -20,12 +28,12 @@
             android:textColor="@android:color/black"
             android:text="Popular" />
 
-    </LinearLayout>
+    <!--</LinearLayout>-->
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="25">
 
         <ImageView
@@ -47,10 +55,10 @@
             android:src="@drawable/drakemorelife"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal">-->
 
         <TextView
             android:textSize="24sp"
@@ -60,19 +68,20 @@
             android:gravity="center"
             android:text="Recently Added" />
 
-    </LinearLayout>
+    <!--</LinearLayout>-->
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:orientation="horizontal"
         android:layout_weight="25">
 
         <ImageView
+            android:id="@+id/imageView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/drakeviews"/>
+            android:src="@drawable/drakeviews" />
 
         <ImageView
             android:layout_width="0dp"
@@ -87,31 +96,26 @@
             android:src="@drawable/kendrickdamn"/>
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:layout_weight="10">
-
-        <Button
-            android:id="@+id/favoritesbutton"
-            android:background="@android:color/holo_blue_bright"
-            android:textColor="@android:color/black"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Favorites"/>
-
-        <Button
-            android:id="@+id/viewartistbutton"
-            android:background="@android:color/holo_red_dark"
-            android:textColor="@android:color/black"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="View Artists"
-            />
-
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <FrameLayout
+            android:id="@+id/contentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/bottomBar" />
+
+        <com.roughike.bottombar.BottomBar
+            android:id="@+id/bottomBar"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            app:bb_inActiveTabColor="#000000"
+            app:bb_activeTabColor="#ffffff"
+            app:bb_tabXmlResource="@xml/bottombar_tabs" />
+
+    </RelativeLayout>
 </LinearLayout>

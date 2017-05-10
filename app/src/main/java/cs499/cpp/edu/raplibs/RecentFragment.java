@@ -1,40 +1,40 @@
 package cs499.cpp.edu.raplibs;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ListView;
-import java.util.*;
 
-
+import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by admin on 4/24/17.
- */
 
-public class FavoritesActivity extends AppCompatActivity {
+public class RecentFragment extends Fragment {
 
     private List<Favorites> favoritesList;
     private ListView listView;
     private FavoritesArrayAdapter favoritesArrayAdapter;
 
-
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.listview);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        initFavorites();
+        View view = inflater.inflate(R.layout.listview, container, false);
 
-        listView = (ListView) findViewById(R.id.artistListView);
+        initRecent();
 
+        listView = (ListView) view.findViewById(R.id.artistListView);
         favoritesArrayAdapter = new FavoritesArrayAdapter(
-                this, R.layout.listview_favorites_item, favoritesList);
-
+                getActivity(), R.layout.listview_favorites_item, favoritesList);
         listView.setAdapter(favoritesArrayAdapter);
+
+        return view;
     }
 
-    private void initFavorites() {
+    private void initRecent() {
         favoritesList = new ArrayList<Favorites>() {{
             add(new Favorites("Drake", "Hermès link, ice-blue mink", R.drawable.drakemorelife));
             add(new Favorites("Drake", "I’m blem for real, I might just say how I feel", R.drawable.drakemorelife));
