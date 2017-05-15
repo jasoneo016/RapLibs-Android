@@ -28,7 +28,7 @@ public class ArtistsFragment extends Fragment {
 
         initArtists();
 
-        listView = (ListView) view.findViewById(R.id.artistListView);
+        listView = (ListView) view.findViewById(R.id.listView);
         artistArrayAdapter = new ArtistArrayAdapter(
                 getActivity(), R.layout.listview_artists_item, artistList);
         listView.setAdapter(artistArrayAdapter);

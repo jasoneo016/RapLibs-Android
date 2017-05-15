@@ -8,6 +8,7 @@ public class Artist {
 
     private String name;
     private int artistImage;
+    private String imageLink;
 
     public Artist(String name, int artistImage) {
         this.name = name;
@@ -25,6 +26,10 @@ public class Artist {
     public int getArtistImage() {
         return artistImage;
     }
+
+//    public String getUrl() {
+//        return url;
+//    }
 
     public void setArtistImage(int artistImage) {
         this.artistImage = artistImage;

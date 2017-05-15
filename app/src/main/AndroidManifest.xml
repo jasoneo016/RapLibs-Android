@@ -21,16 +21,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".ArtistActivity"
-            android:label="Artists">
-        </activity>
-
-        <activity
-            android:name=".FavoritesActivity"
-            android:label="Favorites">
-        </activity>
     </application>
 
 </manifest>

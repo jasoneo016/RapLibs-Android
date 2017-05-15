@@ -24,8 +24,8 @@ public class FavoritesArrayAdapter extends ArrayAdapter<Favorites> {
     private List<Favorites> favorites;
 
     public FavoritesArrayAdapter(@NonNull Context context,
-                              @LayoutRes int resource,
-                              @NonNull List<Favorites> objects) {
+                                 @LayoutRes int resource,
+                                 @NonNull List<Favorites> objects) {
         super(context, resource, objects);
         this.context = context;
         this.layoutResource = resource;

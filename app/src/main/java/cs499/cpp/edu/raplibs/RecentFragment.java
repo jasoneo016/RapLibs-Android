@@ -26,7 +26,7 @@ public class RecentFragment extends Fragment {
 
         initRecent();
 
-        listView = (ListView) view.findViewById(R.id.artistListView);
+        listView = (ListView) view.findViewById(R.id.listView);
         favoritesArrayAdapter = new FavoritesArrayAdapter(
                 getActivity(), R.layout.listview_favorites_item, favoritesList);
         listView.setAdapter(favoritesArrayAdapter);
