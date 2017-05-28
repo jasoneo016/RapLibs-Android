@@ -22,12 +22,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/foresthillsdrive" />
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:src="@drawable/bigseanidecided" />
 
         <ImageView
@@ -35,6 +29,12 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:src="@drawable/drakemorelife" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/drakeviews" />
     </LinearLayout>
 
     <TextView
@@ -57,7 +57,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/drakeviews" />
+            android:src="@drawable/foresthillsdrive" />
 
         <ImageView
             android:layout_width="0dp"

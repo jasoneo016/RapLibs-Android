@@ -1,4 +1,4 @@
-package cs499.cpp.edu.raplibs;
+package cs499.cpp.edu.raplibs.adapters;
 
 import android.content.Context;
 import android.support.annotation.LayoutRes;
@@ -8,24 +8,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.List;
+
+import cs499.cpp.edu.raplibs.model.Lyric;
 
 /**
  * Created by admin on 4/12/17.
  */
 
-public class RapLyricsArrayAdapter extends ArrayAdapter<RapLyrics> {
+public class LyricsArrayAdapter extends ArrayAdapter<Lyric> {
 
     private Context context;
     private int layoutResource;
-    private List<RapLyrics> rapLyrics;
+    private List<Lyric> rapLyrics;
 
-    public RapLyricsArrayAdapter(@NonNull Context context,
-                                 @LayoutRes int resource,
-                                 @NonNull List<RapLyrics> objects) {
+    public LyricsArrayAdapter(@NonNull Context context,
+                              @LayoutRes int resource,
+                              @NonNull List<Lyric> objects) {
         super(context, resource, objects);
         this.context = context;
         this.layoutResource = resource;

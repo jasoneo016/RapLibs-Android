@@ -1,7 +1,5 @@
-package cs499.cpp.edu.raplibs;
+package cs499.cpp.edu.raplibs.main;
 
-import android.nfc.Tag;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -10,51 +8,39 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
 import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+import cs499.cpp.edu.raplibs.R;
+import cs499.cpp.edu.raplibs.fragments.RecentFragment;
+import cs499.cpp.edu.raplibs.fragments.ArtistsFragment;
+import cs499.cpp.edu.raplibs.fragments.FavoritesFragment;
+import cs499.cpp.edu.raplibs.fragments.HomeFragment;
+import cs499.cpp.edu.raplibs.model.Artist;
 
-import android.util.Log;
-import android.widget.Button;
-import android.view.View;
-import android.content.Intent;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private BottomBar bottomBar;
 
-    private DatabaseReference myRef;
-    private FirebaseStorage storage;
+    private DatabaseReference artistsRef;
+
+    List<Artist> artistList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        artistList = new ArrayList<>();
 
-        FirebaseDatabase.getInstance().getReference("artistImages")
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                            String url = snapshot.child("imageLink").getValue().toString();
-                            Log.i("Url's", url);
-//                            Artist artist = snapshot.getValue(Artist.class);
-//                            System.out.println(artist.imageLink);
-                        }
-                    }
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                    }
-                });
+        artistsRef = FirebaseDatabase.getInstance().getReference("artists");
 
         bottomBar = (BottomBar) findViewById(R.id.bottomBar);
         bottomBar.setDefaultTab(R.id.tab_home);
@@ -81,6 +67,30 @@ public class MainActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, fragment).commit();
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+//        artistsRef.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//
+//                artistList.clear();
+//
+//                for (DataSnapshot artistSnapShot : dataSnapshot.getChildren()) {
+//
+//                    Artist artist = artistSnapShot.getValue(Artist.class);
+//                    artistList.add(artist);
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
     }
 }
 

@@ -1,4 +1,4 @@
-package cs499.cpp.edu.raplibs;
+package cs499.cpp.edu.raplibs.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,6 +10,10 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import cs499.cpp.edu.raplibs.model.Favorites;
+import cs499.cpp.edu.raplibs.R;
+import cs499.cpp.edu.raplibs.adapters.FavoritesArrayAdapter;
 
 
 public class FavoritesFragment extends Fragment {

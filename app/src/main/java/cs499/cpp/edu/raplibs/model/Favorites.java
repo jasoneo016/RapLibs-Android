@@ -1,4 +1,4 @@
-package cs499.cpp.edu.raplibs;
+package cs499.cpp.edu.raplibs.model;
 
 /**
  * Created by admin on 4/24/17.

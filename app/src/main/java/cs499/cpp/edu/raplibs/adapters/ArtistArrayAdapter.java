@@ -1,4 +1,4 @@
-package cs499.cpp.edu.raplibs;
+package cs499.cpp.edu.raplibs.adapters;
 
 import android.content.Context;
 import android.support.annotation.LayoutRes;
@@ -13,23 +13,26 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import cs499.cpp.edu.raplibs.model.Artist;
+import cs499.cpp.edu.raplibs.R;
+
 /**
  * Created by admin on 4/24/17.
  */
 
-public class FavoritesArrayAdapter extends ArrayAdapter<Favorites> {
+public class ArtistArrayAdapter extends ArrayAdapter<Artist> {
 
     private Context context;
     private int layoutResource;
-    private List<Favorites> favorites;
+    private List<Artist> artists;
 
-    public FavoritesArrayAdapter(@NonNull Context context,
+    public ArtistArrayAdapter(@NonNull Context context,
                                  @LayoutRes int resource,
-                                 @NonNull List<Favorites> objects) {
-        super(context, resource, objects);
+                                 @NonNull List<Artist> artists) {
+        super(context, resource, artists);
         this.context = context;
         this.layoutResource = resource;
-        this.favorites = objects;
+        this.artists = artists;
     }
 
     @NonNull
@@ -39,14 +42,14 @@ public class FavoritesArrayAdapter extends ArrayAdapter<Favorites> {
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(layoutResource, parent, false);
 
-        ImageView imageView = (ImageView) view.findViewById(R.id.albumart);
-        imageView.setImageResource(favorites.get(position).getAlbumImage());
+        ImageView imageView = (ImageView) view.findViewById(R.id.artistimage);
+//        Picasso.with(mContext).load(url).resize(200, 200).centerCrop().into(imageView);
+//        imageView.setImageResource(artists.get(position).getArtistImage());
 
-        TextView textViewName = (TextView) view.findViewById(R.id.artist);
-        textViewName.setText(favorites.get(position).getName());
+        TextView textViewName = (TextView) view.findViewById(R.id.artistname);
+        textViewName.setText(artists.get(position).getName());
 
-        TextView textViewLyrics = (TextView) view.findViewById(R.id.lyrics);
-        textViewLyrics.setText(favorites.get(position).getLyrics());
+//        Artist artist
 
         return view;
     }

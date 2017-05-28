@@ -1,4 +1,4 @@
-package cs499.cpp.edu.raplibs;
+package cs499.cpp.edu.raplibs.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,6 +10,10 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import cs499.cpp.edu.raplibs.model.Favorites;
+import cs499.cpp.edu.raplibs.R;
+import cs499.cpp.edu.raplibs.adapters.FavoritesArrayAdapter;
 
 
 public class RecentFragment extends Fragment {
@@ -36,7 +40,7 @@ public class RecentFragment extends Fragment {
 
     private void initRecent() {
         favoritesList = new ArrayList<Favorites>() {{
-            add(new Favorites("Big Sean", "All the shit you told me I believed", R.drawable.bigseanidecided));
+            add(new Favorites("Big Sean", "Last night took an L, but tonight I bounce back", R.drawable.bigseanidecided));
             add(new Favorites("Joey Badass", "It's just the way I feel", R.drawable.joeybadassallamerikkkanbadass));
             add(new Favorites("Drake", "Free smoke, free smoke, ayy!", R.drawable.drakemorelife));
             add(new Favorites("Drake", "Top 5 Top 5 Top 5", R.drawable.drakeviews));
