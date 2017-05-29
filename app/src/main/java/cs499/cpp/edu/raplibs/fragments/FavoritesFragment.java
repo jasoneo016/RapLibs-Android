@@ -26,7 +26,7 @@ public class FavoritesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.listview, container, false);
+        View view = inflater.inflate(R.layout.list_view, container, false);
 
         initFavorites();
 

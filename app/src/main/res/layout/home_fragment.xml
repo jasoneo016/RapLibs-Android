@@ -4,6 +4,77 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!--<ListView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+
+    <!--</ListView>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="147dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:drawableLeft="@drawable/ic_artist"
+                android:id="@+id/artists"
+                android:drawableRight="@drawable/ic_rightarrow"
+                android:paddingRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="   Artists"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:drawableLeft="@drawable/ic_album"
+                android:drawableRight="@drawable/ic_rightarrow"
+                android:paddingRight="10dp"
+                android:id="@+id/albums"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="   Albums"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="47dp">
+            <TextView
+                android:drawableLeft="@drawable/ic_lyrics"
+                android:drawableRight="@drawable/ic_rightarrow"
+                android:paddingRight="10dp"
+                android:id="@+id/lyricsAdLibs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="   Lyrics &amp; Ad Libs"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

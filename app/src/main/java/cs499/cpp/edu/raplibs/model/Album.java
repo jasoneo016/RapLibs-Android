@@ -10,7 +10,7 @@ public class Album {
     private int counter;
     private String image;
     private String name;
-    private String timestamp;
+    private long timestamp;
 
     public Album() {
 
@@ -22,7 +22,7 @@ public class Album {
         this.name = name;
     }
 
-    public Album(String artist, int counter, String image, String name, String timestamp) {
+    public Album(String artist, int counter, String image, String name, long timestamp) {
         this.artist = artist;
         this.counter = counter;
         this.image = image;
@@ -62,11 +62,11 @@ public class Album {
         this.image = image;
     }
 
-    public String getTimestamp() {
+    public long getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(String timestamp) {
+    public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }
 }

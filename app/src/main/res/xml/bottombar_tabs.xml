@@ -15,8 +15,8 @@
         title="Favorites"
         barColorWhenSelected="#ffea00"/>
     <tab
-        id="@+id/tab_artists"
-        icon="@drawable/ic_artists"
-        title="Artists"
+        id="@+id/tab_search"
+        icon="@drawable/ic_search"
+        title="Search"
         barColorWhenSelected="#e11414"/>
 </tabs>
