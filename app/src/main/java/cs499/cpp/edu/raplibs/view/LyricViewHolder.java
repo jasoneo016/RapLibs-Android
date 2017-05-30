@@ -31,8 +31,12 @@ public class LyricViewHolder  extends RecyclerView.ViewHolder {
     public void bindImage(Lyric lyric) {
         TextView textViewLyricName = (TextView) viewHolder.findViewById(R.id.lyric);
         textViewLyricName.setText(lyric.getLyric());
+        TextView textViewLyricSongName = (TextView) viewHolder.findViewById(R.id.lyricSongName);
+        textViewLyricSongName.setText(lyric.getSong());
         TextView textViewArtistName = (TextView) viewHolder.findViewById(R.id.lyricArtistName);
         textViewArtistName.setText(lyric.getArtist());
+        TextView textViewLyricAlbumName = (TextView) viewHolder.findViewById(R.id.lyricAlbumName);
+        textViewLyricAlbumName.setText(lyric.getAlbum());
         ImageView imageView = (ImageView) viewHolder.findViewById(R.id.lyricImage);
         Picasso.with(context)
                 .load(lyric.getImage().replace(" ", "%20"))

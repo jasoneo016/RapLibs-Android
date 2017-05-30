@@ -22,20 +22,21 @@ import cs499.cpp.edu.raplibs.model.AdLib;
 import cs499.cpp.edu.raplibs.model.Album;
 import cs499.cpp.edu.raplibs.model.Artist;
 import cs499.cpp.edu.raplibs.model.Lyric;
+import cs499.cpp.edu.raplibs.view.SearchResultsViewHolder;
 
-import static cs499.cpp.edu.raplibs.R.id.imageView;
 
 /**
  * Created by admin on 5/29/17.
  */
 
 
-public class SearchResultsListAdapter extends RecyclerView.Adapter<SearchResultsListAdapter.ViewHolder> {
+public class SearchResultsListAdapter extends RecyclerView.Adapter<SearchResultsViewHolder> {
 
     private List<Artist> artistList = new ArrayList<>();
     private List<Album> albumList = new ArrayList<>();
     private List<Lyric> lyricList = new ArrayList<>();
     private List<AdLib> adLibList = new ArrayList<>();
+
 
     private int mLastAnimatedItemPosition = -1;
 
@@ -60,63 +61,14 @@ public class SearchResultsListAdapter extends RecyclerView.Adapter<SearchResults
     private OnLyricClickListener lyricOnClickListener;
     private OnAdLibClickListener adLibOnClickListener;
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
 
-
-        //Artist View
-        public final ImageView searchArtistImage;
-        public final TextView searchArtistName;
-        public final View searchArtistContainer;
-
-        //Song View
-        public final ImageView searchLyricImage;
-        public final TextView searchLyric;
-        public final TextView searchLyricArtistName;
-        public final TextView searchLyricAlbumName;
-        public final View searchLyricContainer;
-
-        //Album View
-        public final ImageView searchAlbumImage;
-        public final TextView searchAlbumArtistName;
-        public final TextView searchalbumName;
-        public final View searchAlbumContainer;
-
-        //Ad Libs View
-        public final ImageView searchAdLibImage;
-        public final TextView searchAdLib;
-        public final TextView searchAdLibArtistName;
-        public final View searchAdLibContainer;
-
-        Context context;
-
-        public ViewHolder(View view) {
-            super(view);
-            context = view.getContext();
-
-            searchArtistImage = (ImageView) view.findViewById(R.id.searchartistimage);
-            searchArtistName = (TextView) view.findViewById(R.id.searchartistname);
-            searchArtistContainer = view.findViewById(R.id.artist_container);
-
-            searchLyricImage = (ImageView) view.findViewById(R.id.searchLyricImage);
-            searchLyric = (TextView) view.findViewById(R.id.searchLyricName);
-            searchLyricArtistName = (TextView) view.findViewById(R.id.searchLyricArtistName);
-            searchLyricAlbumName = (TextView)  view.findViewById(R.id.searchLyricAlbumName);
-            searchLyricContainer = view.findViewById(R.id.lyric_container);
-
-            searchAlbumImage = (ImageView) view.findViewById(R.id.searchAlbumImage);
-            searchAlbumArtistName = (TextView) view.findViewById(R.id.searchAlbumArtistName);
-            searchalbumName = (TextView)  view.findViewById(R.id.searchAlbumName);
-            searchAlbumContainer = view.findViewById(R.id.album_container);
-
-            searchAdLibImage = (ImageView) view.findViewById(R.id.searchAdLibsImage);
-            searchAdLib = (TextView) view.findViewById(R.id.searchAdLibName);
-            searchAdLibArtistName = (TextView) view.findViewById(R.id.searchAdLibArtistName);
-            searchAdLibContainer = view.findViewById(R.id.adlibs_container);
-        }
+    public void swapArtists(List<Artist> newArtistList) {
+        artistList = newArtistList;
+        notifyDataSetChanged();
     }
 
-    public void swapData(List<Artist> newArtistList) {
-        artistList = newArtistList;
+    public void swapLyrics(List<Lyric> newLyricList) {
+        lyricList = newLyricList;
         notifyDataSetChanged();
     }
 
@@ -124,43 +76,159 @@ public class SearchResultsListAdapter extends RecyclerView.Adapter<SearchResults
         this.artistOnClickListener = artistOnClickListener;
     }
 
-    @Override
-    public SearchResultsListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.search_results_list_item, parent, false);
-        return new ViewHolder(view);
+    public void setLyricsOnClickListener(OnLyricClickListener lyricOnClickListener){
+        this.lyricOnClickListener = lyricOnClickListener;
     }
 
     @Override
-    public void onBindViewHolder(SearchResultsListAdapter.ViewHolder holder, final int position) {
+    public SearchResultsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.search_results_list_item, parent, false);
+        return new SearchResultsViewHolder(view);
+    }
 
-        Artist artist = artistList.get(position);
-        holder.searchArtistName.setText(artist.getName());
-        Picasso.with(holder.context)
-                .load(artistList.get(position).getImage().replace(" ", "%20"))
-                .transform(new RoundTransform(100,1))
-                .resize(200,200)
-                .centerCrop()
-                .into(holder.searchArtistImage);
 
-        if(mLastAnimatedItemPosition < position){
-            animateItem(holder.itemView);
-            mLastAnimatedItemPosition = position;
+    @Override
+    public void onBindViewHolder(SearchResultsViewHolder holder, final int position) {
+
+        if (artistList.size() >  position) {
+            Artist artist = artistList.get(position);
+            holder.searchArtistName.setText(artist.getName());
+            Picasso.with(holder.context)
+                    .load(artistList.get(position).getImage().replace(" ", "%20"))
+                    .transform(new RoundTransform(100,1))
+                    .resize(200,200)
+                    .centerCrop()
+                    .into(holder.searchArtistImage);
+
+            if(mLastAnimatedItemPosition < position){
+                animateItem(holder.itemView);
+                mLastAnimatedItemPosition = position;
+            }
+
+            if(artistOnClickListener != null){
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        artistOnClickListener.onClick(artistList.get(position));
+                    }
+                });
+            }
+        } else {
+            holder.artistsSearchTab.setVisibility(View.GONE);
+            holder.searchArtistImage.setVisibility(View.GONE);
+            holder.searchArtistName.setVisibility(View.GONE);
+            holder.searchArtistContainer.setVisibility(View.GONE);
         }
 
-        if(artistOnClickListener != null){
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    artistOnClickListener.onClick(artistList.get(position));
-                }
-            });
+
+        if (lyricList.size() > 2) {
+            holder.lyricsSearchTab.setVisibility(View.GONE);
+        }
+        if (lyricList.size() > position) {
+            Lyric lyric = lyricList.get(position);
+            holder.searchLyric.setText(lyric.getLyric());
+            holder.searchLyricSongName.setText(lyric.getSong());
+            holder.searchLyricArtistName.setText(lyric.getArtist());
+            holder.searchLyricAlbumName.setText(lyric.getAlbum());
+            Picasso.with(holder.context)
+                    .load(lyricList.get(position).getImage().replace(" ", "%20"))
+                    .resize(200,200)
+                    .centerCrop()
+                    .into(holder.searchLyricImage);
+
+            if(mLastAnimatedItemPosition < position){
+                animateItem(holder.itemView);
+                mLastAnimatedItemPosition = position;
+            }
+
+            if(lyricOnClickListener != null){
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        lyricOnClickListener.onClick(lyricList.get(position));
+                    }
+                });
+            }
+        } else {
+            holder.lyricsSearchTab.setVisibility(View.GONE);
+            holder.searchLyricImage.setVisibility(View.GONE);
+            holder.searchLyric.setVisibility(View.GONE);
+            holder.searchLyricArtistName.setVisibility(View.GONE);
+            holder.searchLyricAlbumName.setVisibility(View.GONE);
+            holder.searchLyricContainer.setVisibility(View.GONE);
+        }
+
+
+        if (albumList.size() > position) {
+            Album album = albumList.get(position);
+            holder.searchAlbumName.setText(album.getName());
+            holder.searchAlbumArtistName.setText(album.getArtist());
+            Picasso.with(holder.context)
+                    .load(albumList.get(position).getImage().replace(" ", "%20"))
+                    .transform(new RoundTransform(100, 1))
+                    .resize(200, 200)
+                    .centerCrop()
+                    .into(holder.searchAlbumImage);
+
+            if (mLastAnimatedItemPosition < position) {
+                animateItem(holder.itemView);
+                mLastAnimatedItemPosition = position;
+            }
+
+            if (albumOnClickListener != null) {
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        albumOnClickListener.onClick(albumList.get(position));
+                    }
+                });
+            }
+        } else {
+            holder.albumsSearchTab.setVisibility(View.GONE);
+            holder.searchAlbumImage.setVisibility(View.GONE);
+            holder.searchAlbumArtistName.setVisibility(View.GONE);
+            holder.searchAlbumName.setVisibility(View.GONE);
+            holder.searchAlbumContainer.setVisibility(View.GONE);
+        }
+
+
+        if (adLibList.size() > position) {
+            AdLib adLib = adLibList.get(position);
+            holder.searchAdLib.setText(adLib.getAdlib());
+            holder.searchAdLibArtistName.setText(adLib.getArtist());
+            Picasso.with(holder.context)
+                    .load(adLibList.get(position).getImage().replace(" ", "%20"))
+                    .transform(new RoundTransform(100, 1))
+                    .resize(200, 200)
+                    .centerCrop()
+                    .into(holder.searchAdLibImage);
+
+            if (mLastAnimatedItemPosition < position) {
+                animateItem(holder.itemView);
+                mLastAnimatedItemPosition = position;
+            }
+
+            if (adLibOnClickListener != null) {
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        adLibOnClickListener.onClick(adLibList.get(position));
+                    }
+                });
+            }
+        } else {
+            holder.adLibsSearchTab.setVisibility(View.GONE);
+            holder.searchAdLibImage.setVisibility(View.GONE);
+            holder.searchAdLib.setVisibility(View.GONE);
+            holder.searchAdLibArtistName.setVisibility(View.GONE);
+            holder.searchAdLibContainer.setVisibility(View.GONE);
         }
     }
 
     @Override
     public int getItemCount() {
-        return artistList.size();
+        return artistList.size() + lyricList.size() + adLibList.size() + albumList.size();
     }
 
     private void animateItem(View view) {

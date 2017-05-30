@@ -87,6 +87,13 @@
 
             <TextView
                 android:textSize="16sp"
+                android:text="Song Name"
+                android:id="@+id/searchLyricSongName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textSize="16sp"
                 android:text="Artist Name"
                 android:id="@+id/searchLyricArtistName"
                 android:layout_width="wrap_content"
@@ -199,5 +206,4 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>
-
 </LinearLayout>

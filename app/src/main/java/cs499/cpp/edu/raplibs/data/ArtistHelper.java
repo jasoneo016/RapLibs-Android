@@ -11,23 +11,17 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import cs499.cpp.edu.raplibs.model.Artist;
 
-/**
- * Created by admin on 5/29/17.
- */
-
-public class DataHelper {
+public class ArtistHelper {
 
     private DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference();
     private DatabaseReference artistsRef = dbRef.child("artists");
     private List<Artist> artistList = new ArrayList<>();
 
-    public DataHelper() {
+    public ArtistHelper() {
         populateArtistList();
     }
 
@@ -71,7 +65,7 @@ public class DataHelper {
 
                     for (Artist artist : artistList) {
                         if (artist.getName().toUpperCase()
-                                .startsWith(constraint.toString().toUpperCase())) {
+                                .contains(constraint.toString().toUpperCase())) {
                             suggestionList.add(artist);
                         }
                     }
