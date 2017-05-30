@@ -1,6 +1,8 @@
 package cs499.cpp.edu.raplibs.fragments;
 
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -28,6 +30,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.internal.Utils;
@@ -47,6 +50,8 @@ public class LyricsFragment extends Fragment {
     private DatabaseReference dbRef;
     private DatabaseReference lyricsRef;
 
+    private MediaPlayer mediaPlayer;
+    private List<Lyric> lyricList = new ArrayList<>();
 
     @Nullable
     @Override
@@ -54,6 +59,9 @@ public class LyricsFragment extends Fragment {
 
         dbRef = FirebaseDatabase.getInstance().getReference();
         lyricsRef = dbRef.child("lyrics");
+
+        mediaPlayer = new MediaPlayer();
+        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
 
         recyclerView = (RecyclerView) inflater.inflate(R.layout.list_view, container, false);
         recyclerView.setHasFixedSize(true);
@@ -65,6 +73,18 @@ public class LyricsFragment extends Fragment {
             protected void populateViewHolder(LyricViewHolder viewHolder, Lyric lyric, int position)
             {
                 viewHolder.bindImage(lyric);
+                lyricList.add(lyric);
+                viewHolder.shareButton.setOnClickListener(new LyricOnClickListener(lyric) {
+                    public void onClick(View v) {
+                        String audioPath = lyric.getMp3().replace(" ", "+").replace("&","%26").replace(",", "%2C");
+                        Intent sendIntent = new Intent(Intent.ACTION_SEND);
+                        sendIntent.putExtra(lyric.getArtist(), lyric.getLyric());
+                        sendIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse(audioPath)); // url would point to mp3 file
+                        sendIntent.setType("audio/mp3");
+                        startActivity(sendIntent);
+                        startActivity(Intent.createChooser(sendIntent, "Share Audio Clip"));
+                    }
+                });
             }
 
             @Override
@@ -73,39 +93,9 @@ public class LyricsFragment extends Fragment {
                 viewHolder.setOnClickListener(new LyricViewHolder.ClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        Toast.makeText(getActivity(), "Item clicked at " + position, Toast.LENGTH_SHORT).show();
-//                        String mp3Path = "https://s3-us-west-1.amazonaws.com/raplibsbucket/RapLibs/Drake/Albums/More Life/KMT (feat. Giggs)/Batman.mp3";
-//                        mp3Path.replace(" ", "%20");
-//                        Uri uri = Uri.parse(mp3Path);
-//                        Intent share = new Intent(Intent.ACTION_SEND);
-//                        share.setType("audio/mp3");
-//                        share.putExtra(Intent.EXTRA_STREAM, uri);
-//                        startActivity(Intent.createChooser(share, "Share Sound File"));
-
-                        String audioClipFilePath = "https://s3-us-west-1.amazonaws.com/raplibsbucket/RapLibs/Drake/Albums/More Life/Gyalchester/Hermes link, ice-blue mink.mp3".replace(" ", "%20");
-                        String[] path = audioClipFilePath.split("/");
-                        String songName = path[9];
-                        String SDCardRoot = Environment.getExternalStorageDirectory()
-                                .toString();
-                        downloadFile(audioClipFilePath, path[9],
-                                SDCardRoot+"/RapLibs");
-
-                        final Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
-                        shareIntent.setType("audio/mp3");
-                        shareIntent.putExtra(android.content.Intent.EXTRA_STREAM, Uri.parse(SDCardRoot + "/RapLibs/" + path[9]));
-                        shareIntent.setPackage("vnd.android-dir/mms-sms");
-                        startActivity(shareIntent);
-//                        startActivity(Intent.createChooser(shareIntent, "Share Audio Clip"));
-
-
-//                        File imageFile = ...;
-//                        Uri uriToImage = FileProvider.getUriForFile(
-//                                context, FILES_AUTHORITY, imageFile);
-//                        Intent shareIntent = ShareCompat.IntentBuilder.from(activity)
-//                                .setStream(uriToImage)
-//                                .getIntent();
-//                        shareIntent.setData(uriToImage);
-//                        shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                        String audioPath = lyricList.get(position).getMp3().replace(" ", "+").replace("&","%26").replace(",", "%2C");
+                        mediaPlayer = MediaPlayer.create(getActivity(), Uri.parse(audioPath));
+                        mediaPlayer.start();
                     }
                 });
                 return viewHolder;
@@ -120,73 +110,19 @@ public class LyricsFragment extends Fragment {
         recyclerView.addItemDecoration(dividerItemDecoration);
         return recyclerView;
     }
-
-    static void downloadFile(String mp3URL, String fileName,
-                             String pathToSave) {
-        int downloadedSize = 0;
-        int totalSize = 0;
-
-        try {
-            URL url = new URL(mp3URL);
-            HttpURLConnection urlConnection = (HttpURLConnection) url
-                    .openConnection();
-
-            urlConnection.setRequestMethod("POST");
-            urlConnection.setDoOutput(true);
-
-            // connect
-            urlConnection.connect();
-
-            File myDir;
-            myDir = new File(pathToSave);
-            myDir.mkdirs();
-
-            // create a new file, to save the downloaded file
-
-            String mFileName = fileName;
-            File file = new File(myDir, mFileName);
-
-            FileOutputStream fileOutput = new FileOutputStream(file);
-
-            // Stream used for reading the data from the internet
-            InputStream inputStream = urlConnection.getInputStream();
-
-            // this is the total size of the file which we are downloading
-            totalSize = urlConnection.getContentLength();
-
-            // create a buffer...
-            byte[] buffer = new byte[1024];
-            int bufferLength = 0;
-
-            while ((bufferLength = inputStream.read(buffer)) > 0) {
-                fileOutput.write(buffer, 0, bufferLength);
-                downloadedSize += bufferLength;
-                // update the progressbar //
-                // runOnUiThread(new Runnable() {
-                // public void run() {
-                // pb.setProgress(downloadedSize);
-                // float per = ((float)downloadedSize/totalSize) * 100;
-                // cur_val.setText("Downloaded " + downloadedSize + "KB / " +
-                // totalSize + "KB (" + (int)per + "%)" );
-                // }
-                // });
-            }
-            // close the output stream when complete //
-            fileOutput.close();
-            // runOnUiThread(new Runnable() {
-            // public void run() {
-            // // pb.dismiss(); // if you want close it..
-            // }
-            // });
-
-        } catch (final MalformedURLException e) {
-            // showError("Error : MalformedURLException " + e);
-            e.printStackTrace();
-        } catch (final IOException e) {
-            // showError("Error : IOException " + e);
-            e.printStackTrace();
-        } catch (final Exception e) {
-            // showError("Error : Please check your internet connection " + e);
-        }
-    }
 }
+
+class LyricOnClickListener implements View.OnClickListener
+{
+
+    Lyric lyric;
+    public LyricOnClickListener(Lyric lyric) {
+        this.lyric = lyric;
+    }
+
+    @Override
+    public void onClick(View v)
+    {
+    }
+
+};

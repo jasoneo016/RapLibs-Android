@@ -1,5 +1,7 @@
 package cs499.cpp.edu.raplibs.fragments;
 
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,6 +16,9 @@ import android.widget.Toast;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import cs499.cpp.edu.raplibs.R;
 import cs499.cpp.edu.raplibs.model.AdLib;
@@ -30,12 +35,18 @@ public class AdLibsFragment extends Fragment {
     private DatabaseReference dbRef;
     private DatabaseReference adLibsRef;
 
+    private MediaPlayer mediaPlayer;
+    private List<AdLib> adLibList = new ArrayList<>();
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         dbRef = FirebaseDatabase.getInstance().getReference();
         adLibsRef = dbRef.child("adlibs");
+
+        mediaPlayer = new MediaPlayer();
+        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
 
         recyclerView = (RecyclerView) inflater.inflate(R.layout.list_view, container, false);
         recyclerView.setHasFixedSize(true);
