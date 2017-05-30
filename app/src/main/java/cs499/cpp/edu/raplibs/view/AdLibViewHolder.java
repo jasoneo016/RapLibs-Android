@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import cs499.cpp.edu.raplibs.R;
+import cs499.cpp.edu.raplibs.helper.RoundTransform;
 import cs499.cpp.edu.raplibs.model.AdLib;
 
 /**
@@ -36,6 +37,7 @@ public class AdLibViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView = (ImageView) viewHolder.findViewById(R.id.adLibImage);
         Picasso.with(context)
                 .load(adLib.getImage().replace(" ", "%20"))
+                .transform(new RoundTransform(100,1))
                 .resize(200,200)
                 .centerCrop()
                 .into(imageView);

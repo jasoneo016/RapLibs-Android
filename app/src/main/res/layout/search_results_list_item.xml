@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Artists"
+        android:id="@+id/artistSearchTab"
         android:textSize="35sp"
         android:textColor="#000000"
         android:paddingBottom="10dp"
@@ -42,6 +43,161 @@
             android:textColor="#000000"
             android:textSize="20sp" />
 
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lyrics"
+        android:id="@+id/lyricsSearchTab"
+        android:textSize="35sp"
+        android:textColor="#000000"
+        android:paddingBottom="10dp"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/lyric_container">
+
+        <ImageView
+            android:id="@+id/searchLyricImage"
+            android:src="@drawable/foresthillsdrive"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:layout_centerInParent="true" />
+
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center"
+            android:layout_weight="3"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="24sp"
+                android:textColor="#000000"
+                android:text="Lyric"
+                android:id="@+id/searchLyricName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textSize="16sp"
+                android:text="Artist Name"
+                android:id="@+id/searchLyricArtistName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textSize="16sp"
+                android:text="Album Name"
+                android:id="@+id/searchLyricAlbumName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Albums"
+        android:id="@+id/albumSearchTab"
+        android:textSize="35sp"
+        android:textColor="#000000"
+        android:paddingBottom="10dp"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/album_container">
+
+        <ImageView
+            android:id="@+id/searchAlbumImage"
+            android:src="@drawable/foresthillsdrive"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:layout_centerInParent="true"/>
+
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center"
+            android:layout_weight="3"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="24sp"
+                android:textColor="#000000"
+                android:text="Album Name"
+                android:id="@+id/searchAlbumName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textSize="18sp"
+                android:text="Artist Name"
+                android:id="@+id/searchAlbumArtistName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ad Libs"
+        android:id="@+id/adLibsSearchTab"
+        android:textSize="35sp"
+        android:textColor="#000000"
+        android:paddingBottom="10dp"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/adlibs_container">
+
+        <ImageView
+            android:id="@+id/searchAdLibsImage"
+            android:src="@drawable/foresthillsdrive"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:layout_centerInParent="true"/>
+
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center"
+            android:layout_weight="3"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="24sp"
+                android:textColor="#000000"
+                android:text="Ad Lib"
+                android:id="@+id/searchAdLibName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textSize="18sp"
+                android:text="Artist Name"
+                android:id="@+id/searchAdLibArtistName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

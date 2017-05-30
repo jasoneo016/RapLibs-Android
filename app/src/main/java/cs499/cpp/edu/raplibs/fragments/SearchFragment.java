@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.arlib.floatingsearchview.FloatingSearchView;
+import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cs499.cpp.edu.raplibs.R;
+import cs499.cpp.edu.raplibs.adapters.SearchResultsListAdapter;
 import cs499.cpp.edu.raplibs.data.ArtistSuggestion;
 import cs499.cpp.edu.raplibs.data.DataHelper;
 import cs499.cpp.edu.raplibs.model.Artist;
@@ -37,13 +39,14 @@ public class SearchFragment extends Fragment {
 
     private final String TAG = "BlankFragment";
     public static final long FIND_SUGGESTION_SIMULATED_DELAY = 250;
+    private String lastQuery = "";
 
     private FloatingSearchView mySearchView;
     private RecyclerView recyclerView;
 
-    private DatabaseReference dbRef;
-    private DatabaseReference artistsRef;
     private FirebaseRecyclerAdapter<Artist,ArtistViewHolder> adapter;
+    private SearchResultsListAdapter mySearchResultsAdapter;
+    private boolean mIsDarkSearchTheme = false;
 
     public SearchFragment() {
 
@@ -52,8 +55,6 @@ public class SearchFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        dbRef = FirebaseDatabase.getInstance().getReference();
-        artistsRef = dbRef.child("artists");
         return inflater.inflate(R.layout.listview_search, container, false);
     }
 
@@ -62,36 +63,10 @@ public class SearchFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = (RecyclerView) view.findViewById(R.id.search_results_list);
         mySearchView = (FloatingSearchView) view.findViewById(R.id.floating_search_view);
-        recyclerView.setHasFixedSize(true);
-        adapter = new FirebaseRecyclerAdapter<Artist, ArtistViewHolder>(
-                Artist.class, R.layout.search_results_list_item, ArtistViewHolder.class, artistsRef) {
-
-            @Override
-            protected void populateViewHolder(ArtistViewHolder viewHolder, Artist artist, int position)
-            {
-                viewHolder.bindImage(artist, R.id.searchartistname, R.id.searchartistimage);
-            }
-
-            @Override
-            public ArtistViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-                ArtistViewHolder viewHolder = super.onCreateViewHolder(parent, viewType);
-                viewHolder.setOnClickListener(new ArtistViewHolder.ClickListener() {
-                    @Override
-                    public void onItemClick(View view, int position) {
-                        Toast.makeText(getActivity(), "Item clicked at " + position, Toast.LENGTH_SHORT).show();
-                    }
-                });
-                return viewHolder;
-            }
-        };
-        recyclerView.setAdapter(adapter);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(linearLayoutManager);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
-                linearLayoutManager.getOrientation());
-        recyclerView.addItemDecoration(dividerItemDecoration);
+//        recyclerView.setHasFixedSize(true);
 //        setUpDrawer();
         setUpSearchBar();
+        setupResultsList();
     }
 
     private void setUpSearchBar() {
@@ -102,33 +77,22 @@ public class SearchFragment extends Fragment {
             public void onSearchTextChanged(String oldQuery, final String newQuery) {
 
                 if (!oldQuery.equals("") && newQuery.equals("")) {
-                    mySearchView.clearSuggestions();
+
+
                 } else {
-
-                    //this shows the top left circular progress
-                    //you can call it where ever you want, but
-                    //it makes sense to do it when loading something in
-                    //the background.
-                    mySearchView.showProgress();
-
-                    //simulates a query call to a data source
-                    //with a new query.
-                    dataHelper.findSuggestions(getActivity(), newQuery, 5,
-                            FIND_SUGGESTION_SIMULATED_DELAY, new DataHelper.OnFindSuggestionsListener() {
+                    dataHelper.findArtists(getActivity(), newQuery,
+                            new DataHelper.OnFindArtistsListener() {
 
                                 @Override
-                                public void onResults(List<ArtistSuggestion> results) {
-                                    //this will swap the data and
-                                    //render the collapse/expand animations as necessary
-                                    mySearchView.swapSuggestions(results);
-
-                                    //let the users know that the background
-                                    //process has completed
-                                    mySearchView.hideProgress();
+                                public void onResults(List<Artist> results) {
+                                    mySearchResultsAdapter.swapData(results);
                                 }
-                            });
-                }
 
+                            });
+
+                    lastQuery = newQuery;
+
+                }
                 Log.d(TAG, "onSearchTextChanged()");
             }
         });
@@ -136,6 +100,12 @@ public class SearchFragment extends Fragment {
 
     private void setUpDrawer() {
 
+    }
+
+    private void setupResultsList() {
+        mySearchResultsAdapter = new SearchResultsListAdapter();
+        recyclerView.setAdapter(mySearchResultsAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
 }
