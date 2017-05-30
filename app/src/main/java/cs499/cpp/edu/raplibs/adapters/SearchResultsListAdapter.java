@@ -72,12 +72,30 @@ public class SearchResultsListAdapter extends RecyclerView.Adapter<SearchResults
         notifyDataSetChanged();
     }
 
+    public void swapAlbums(List<Album> newAlbumList) {
+        albumList = newAlbumList;
+        notifyDataSetChanged();
+    }
+
+    public void swapAdLibs(List<AdLib> newAdLibList) {
+        adLibList = newAdLibList;
+        notifyDataSetChanged();
+    }
+
     public void setArtistsOnClickListener(OnArtistClickListener artistOnClickListener){
         this.artistOnClickListener = artistOnClickListener;
     }
 
     public void setLyricsOnClickListener(OnLyricClickListener lyricOnClickListener){
         this.lyricOnClickListener = lyricOnClickListener;
+    }
+
+    public void setAlbumsOnClickListener(OnAlbumClickListener albumOnClickListener){
+        this.albumOnClickListener = albumOnClickListener;
+    }
+
+    public void setAdLibsOnClickListener(OnAdLibClickListener adLibOnClickListener){
+        this.adLibOnClickListener = adLibOnClickListener;
     }
 
     @Override

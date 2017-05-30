@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +15,12 @@ import java.util.List;
 
 import cs499.cpp.edu.raplibs.R;
 import cs499.cpp.edu.raplibs.adapters.SearchResultsListAdapter;
+import cs499.cpp.edu.raplibs.data.AdLibHelper;
+import cs499.cpp.edu.raplibs.data.AlbumHelper;
 import cs499.cpp.edu.raplibs.data.ArtistHelper;
 import cs499.cpp.edu.raplibs.data.LyricHelper;
+import cs499.cpp.edu.raplibs.model.AdLib;
+import cs499.cpp.edu.raplibs.model.Album;
 import cs499.cpp.edu.raplibs.model.Artist;
 import cs499.cpp.edu.raplibs.model.Lyric;
 
@@ -59,8 +62,8 @@ public class SearchFragment extends Fragment {
 
         final ArtistHelper artistHelper = new ArtistHelper();
         final LyricHelper lyricHelper = new LyricHelper();
-//        final AlbumHelper artistHelper = new ArtistHelper();
-//        final AdLibHelper artistHelper = new ArtistHelper();
+        final AlbumHelper albumHelper = new AlbumHelper();
+        final AdLibHelper adLibHelper = new AdLibHelper();
 
         mySearchView.setOnQueryChangeListener(new FloatingSearchView.OnQueryChangeListener() {
             @Override
@@ -87,6 +90,32 @@ public class SearchFragment extends Fragment {
                                 public void onResults(List<Lyric> lyricResults) {
                                     mySearchResultsAdapter.swapLyrics(lyricResults);
                                     if (!lyricResults.contains(newQuery)) {
+                                        //handle
+                                    }
+                                }
+
+                            });
+
+                    albumHelper.findAlbums(getActivity(), newQuery,
+                            new AlbumHelper.OnFindAlbumsListener() {
+
+                                @Override
+                                public void onResults(List<Album> albumResults) {
+                                    mySearchResultsAdapter.swapAlbums(albumResults);
+                                    if (!albumResults.contains(newQuery)) {
+                                        //handle
+                                    }
+                                }
+
+                            });
+
+                    adLibHelper.findAdLibs(getActivity(), newQuery,
+                            new AdLibHelper.OnFindAdLibsListener() {
+
+                                @Override
+                                public void onResults(List<AdLib> adLibsResults) {
+                                    mySearchResultsAdapter.swapAdLibs(adLibsResults);
+                                    if (!adLibsResults.contains(newQuery)) {
                                         //handle
                                     }
                                 }
