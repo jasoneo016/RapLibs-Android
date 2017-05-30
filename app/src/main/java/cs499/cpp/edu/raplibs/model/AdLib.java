@@ -1,38 +1,34 @@
 package cs499.cpp.edu.raplibs.model;
 
 /**
- * Created by admin on 4/12/17.
+ * Created by admin on 5/29/17.
  */
 
-public class Lyric {
+public class AdLib {
 
-    private String album;
     private String artist;
     private int counter;
     private String image;
-    private String lyric;
+    private String adlib;
     private String mp3;
-    private String song;
     private long timestamp;
 
-    public Lyric() {
+    public AdLib() {
 
     }
 
-    public Lyric(String artist, String image, String lyric) {
+    public AdLib(String artist, String image, String adlib) {
         this.artist = artist;
         this.image = image;
-        this.lyric = lyric;
+        this.adlib = adlib;
     }
 
-    public Lyric(String album, String artist, int counter, String image, String lyric, String mp3, String song, long timestamp) {
-        this.album = album;
+    public AdLib(String artist, int counter, String image, String adlib, String mp3, long timestamp) {
         this.artist = artist;
         this.counter = counter;
         this.image = image;
-        this.lyric = lyric;
+        this.adlib = adlib;
         this.mp3 = mp3;
-        this.song = song;
         this.timestamp = timestamp;
     }
 
@@ -42,22 +38,6 @@ public class Lyric {
 
     public void setArtist(String artist) {
         this.artist = artist;
-    }
-
-    public String getLyric() {
-        return lyric;
-    }
-
-    public void setLyric(String lyric) {
-        this.lyric = lyric;
-    }
-
-    public String getAlbum() {
-        return album;
-    }
-
-    public void setAlbum(String album) {
-        this.album = album;
     }
 
     public int getCounter() {
@@ -76,20 +56,20 @@ public class Lyric {
         this.image = image;
     }
 
+    public String getAdlib() {
+        return adlib;
+    }
+
+    public void setAdlib(String adlib) {
+        this.adlib = adlib;
+    }
+
     public String getMp3() {
         return mp3;
     }
 
     public void setMp3(String mp3) {
         this.mp3 = mp3;
-    }
-
-    public String getSong() {
-        return song;
-    }
-
-    public void setSong(String song) {
-        this.song = song;
     }
 
     public long getTimestamp() {

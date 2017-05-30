@@ -1,18 +1,10 @@
-package cs499.cpp.edu.raplibs.main;
+package cs499.cpp.edu.raplibs.driver;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.roughike.bottombar.BottomBar;
-import com.roughike.bottombar.OnTabReselectListener;
 import com.roughike.bottombar.OnTabSelectListener;
 
 import android.support.annotation.IdRes;
@@ -20,14 +12,9 @@ import android.support.v4.app.Fragment;
 
 import cs499.cpp.edu.raplibs.R;
 import cs499.cpp.edu.raplibs.fragments.RecentFragment;
-import cs499.cpp.edu.raplibs.fragments.ArtistsFragment;
 import cs499.cpp.edu.raplibs.fragments.FavoritesFragment;
 import cs499.cpp.edu.raplibs.fragments.HomeFragment;
 import cs499.cpp.edu.raplibs.fragments.SearchFragment;
-import cs499.cpp.edu.raplibs.model.Artist;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -119,25 +106,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
-//        artistsRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//
-//                artistList.clear();
-//
-//                for (DataSnapshot artistSnapShot : dataSnapshot.getChildren()) {
-//
-//                    Artist artist = artistSnapShot.getValue(Artist.class);
-//                    artistList.add(artist);
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
     }
 }
 

@@ -22,8 +22,10 @@ public class HomeFragment extends Fragment {
     TextView artistsTextView;
     @BindView(R.id.albums)
     TextView albumsTextView;
-    @BindView(R.id.lyricsAdLibs)
-    TextView lyricsAdLibsTextView;
+    @BindView(R.id.lyrics)
+    TextView lyricsTextView;
+    @BindView(R.id.adlibs)
+    TextView adLibsTextView;
 
     @Nullable
     @Override
@@ -44,7 +46,7 @@ public class HomeFragment extends Fragment {
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left);
-        fragmentTransaction.addToBackStack("artistsFragment");
+//        fragmentTransaction.addToBackStack("artistsFragment");
         fragmentTransaction.replace(R.id.fragmentContainer, fragment);
         fragmentTransaction.commit();
     }
@@ -55,18 +57,29 @@ public class HomeFragment extends Fragment {
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left);
-        fragmentTransaction.addToBackStack("artistsFragment");
+//        fragmentTransaction.addToBackStack("artistsFragment");
         fragmentTransaction.replace(R.id.fragmentContainer, fragment);
         fragmentTransaction.commit();
     }
 
-    @OnClick(R.id.lyricsAdLibs)
-    public void onClickLyricsAdLibs() {
-        Fragment fragment = new ArtistsFragment();
+    @OnClick(R.id.lyrics)
+    public void onClickLyrics() {
+        Fragment fragment = new LyricsFragment();
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left);
-        fragmentTransaction.addToBackStack("artistsFragment");
+//        fragmentTransaction.addToBackStack("artistsFragment");
+        fragmentTransaction.replace(R.id.fragmentContainer, fragment);
+        fragmentTransaction.commit();
+    }
+
+    @OnClick(R.id.adlibs)
+    public void onClickAdLibs() {
+        Fragment fragment = new AdLibsFragment();
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left);
+//        fragmentTransaction.addToBackStack("artistsFragment");
         fragmentTransaction.replace(R.id.fragmentContainer, fragment);
         fragmentTransaction.commit();
     }

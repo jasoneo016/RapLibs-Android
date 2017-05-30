@@ -9,33 +9,33 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import cs499.cpp.edu.raplibs.R;
-import cs499.cpp.edu.raplibs.helper.RoundTransform;
-import cs499.cpp.edu.raplibs.model.Artist;
+import cs499.cpp.edu.raplibs.model.AdLib;
 
 /**
- * Created by admin on 5/28/17.
+ * Created by admin on 5/29/17.
  */
 
-public class ArtistViewHolder extends RecyclerView.ViewHolder {
+public class AdLibViewHolder extends RecyclerView.ViewHolder {
 
     View viewHolder;
     Context context;
 
-    private ArtistViewHolder.ClickListener myClickListener;
+    private AdLibViewHolder.ClickListener myClickListener;
 
-    public ArtistViewHolder(View v) {
+    public AdLibViewHolder(View v) {
         super(v);
         viewHolder = v;
         context = v.getContext();
     }
 
-    public void bindImage(Artist artist, int artistName, int artistImage) {
-        TextView textViewName = (TextView) viewHolder.findViewById(artistName);
-        textViewName.setText(artist.getName());
-        ImageView imageView = (ImageView) viewHolder.findViewById(artistImage);
+    public void bindImage(AdLib adLib) {
+        TextView textViewLyricName = (TextView) viewHolder.findViewById(R.id.adlib);
+        textViewLyricName.setText(adLib.getAdlib());
+        TextView textViewArtistName = (TextView) viewHolder.findViewById(R.id.adlibArtistName);
+        textViewArtistName.setText(adLib.getArtist());
+        ImageView imageView = (ImageView) viewHolder.findViewById(R.id.adLibImage);
         Picasso.with(context)
-                .load(artist.getImage().replace(" ", "%20"))
-                .transform(new RoundTransform(100,1))
+                .load(adLib.getImage().replace(" ", "%20"))
                 .resize(200,200)
                 .centerCrop()
                 .into(imageView);
@@ -54,7 +54,7 @@ public class ArtistViewHolder extends RecyclerView.ViewHolder {
         public void onItemClick(View view, int position);
     }
 
-    public void setOnClickListener(ArtistViewHolder.ClickListener clickListener){
+    public void setOnClickListener(AdLibViewHolder.ClickListener clickListener){
         myClickListener = clickListener;
     }
 }
