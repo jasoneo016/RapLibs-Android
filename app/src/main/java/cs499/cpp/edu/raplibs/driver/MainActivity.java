@@ -1,7 +1,7 @@
 package cs499.cpp.edu.raplibs.driver;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     public BottomBar bottomBar;
 
     public static Context mContext;
+
+//    Fragment homeFragment = new HomeFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,15 +68,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTabReSelected(@IdRes int tabId) {
 
-                FragmentManager fragmentManager = getFragmentManager();
+                FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
                 switch(tabId)
                 {
                     case R.id.tab_home:
-                        HomeFragment fragment = new HomeFragment();
+                        Fragment fragment = new HomeFragment();
                         fragmentManager.popBackStack();
-//                        fragmentTransaction.replace(R.id.fragmentContainer, new HomeFragment());
+                        fragmentTransaction.replace(R.id.fragmentContainer, fragment);
                         fragmentTransaction.addToBackStack(null);
                         fragmentTransaction.commit();
                         break;
