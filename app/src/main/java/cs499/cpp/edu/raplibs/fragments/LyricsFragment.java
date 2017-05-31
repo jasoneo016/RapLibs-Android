@@ -38,6 +38,7 @@ import cs499.cpp.edu.raplibs.R;
 import cs499.cpp.edu.raplibs.driver.MainActivity;
 import cs499.cpp.edu.raplibs.model.Lyric;
 import cs499.cpp.edu.raplibs.view.LyricViewHolder;
+import io.paperdb.Paper;
 
 /**
  * Created by admin on 5/28/17.
@@ -59,6 +60,7 @@ public class LyricsFragment extends Fragment {
 
         dbRef = FirebaseDatabase.getInstance().getReference();
         lyricsRef = dbRef.child("lyrics");
+        Paper.init(getActivity());
 
         mediaPlayer = new MediaPlayer();
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
@@ -74,6 +76,12 @@ public class LyricsFragment extends Fragment {
             {
                 viewHolder.bindImage(lyric);
                 lyricList.add(lyric);
+
+                viewHolder.favoriteButton.setOnClickListener(new LyricOnClickListener(lyric) {
+                    public void onClick(View v) {
+//                        Paper.book().write("")
+                    }
+                });
                 viewHolder.shareButton.setOnClickListener(new LyricOnClickListener(lyric) {
                     public void onClick(View v) {
                         String audioPath = lyric.getMp3().replace(" ", "+").replace("&","%26").replace(",", "%2C");

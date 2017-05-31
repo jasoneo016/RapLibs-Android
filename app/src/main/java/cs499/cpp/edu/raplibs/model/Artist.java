@@ -6,9 +6,9 @@ import java.util.List;
  * Created by admin on 4/24/17.
  */
 
-public class Artist {
+public class Artist implements Music {
 
-    private String name;
+    private String artist;
     private String image;
     private int counter;
     private long timestamp;
@@ -20,13 +20,13 @@ public class Artist {
 
     }
 
-    public Artist(String name, String image) {
-        this.name = name;
+    public Artist(String artist, String image) {
+        this.artist = artist;
         this.image = image;
     }
 
-    public Artist(String name, String image, int counter, long timestamp, List<String> albumUUIDs, List<String> adLibUUIDs, List<String> lyricUUIDs) {
-        this.name = name;
+    public Artist(String artist, String image, int counter, long timestamp, List<String> albumUUIDs, List<String> adLibUUIDs, List<String> lyricUUIDs) {
+        this.artist = artist;
         this.image = image;
         this.counter = counter;
         this.timestamp = timestamp;
@@ -35,12 +35,12 @@ public class Artist {
         this.lyricUUIDs = lyricUUIDs;
     }
 
-    public String getName() {
-        return name;
+    public String getArtist() {
+        return artist;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setArtist(String artist) {
+        this.artist = artist;
     }
 
     public String getImage() {

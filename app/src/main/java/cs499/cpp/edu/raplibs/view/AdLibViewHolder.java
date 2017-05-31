@@ -21,6 +21,9 @@ public class AdLibViewHolder extends RecyclerView.ViewHolder {
     View viewHolder;
     Context context;
 
+    public ImageView shareButton;
+    public ImageView favoriteButton;
+
     private AdLibViewHolder.ClickListener myClickListener;
 
     public AdLibViewHolder(View v) {
@@ -34,6 +37,8 @@ public class AdLibViewHolder extends RecyclerView.ViewHolder {
         textViewLyricName.setText(adLib.getAdlib());
         TextView textViewArtistName = (TextView) viewHolder.findViewById(R.id.adlibArtistName);
         textViewArtistName.setText(adLib.getArtist());
+        shareButton = (ImageView) viewHolder.findViewById(R.id.shareAdLibSong);
+        favoriteButton = (ImageView) viewHolder.findViewById(R.id.adLibFavorite);
         ImageView imageView = (ImageView) viewHolder.findViewById(R.id.adLibImage);
         Picasso.with(context)
                 .load(adLib.getImage().replace(" ", "%20"))

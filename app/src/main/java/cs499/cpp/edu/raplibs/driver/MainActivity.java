@@ -1,10 +1,13 @@
 package cs499.cpp.edu.raplibs.driver;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.roughike.bottombar.BottomBar;
+import com.roughike.bottombar.OnTabReselectListener;
 import com.roughike.bottombar.OnTabSelectListener;
 
 import android.support.annotation.IdRes;
@@ -19,7 +22,7 @@ import cs499.cpp.edu.raplibs.fragments.SearchFragment;
 
 public class MainActivity extends AppCompatActivity {
 
-    private BottomBar bottomBar;
+    public BottomBar bottomBar;
 
     public static Context mContext;
 
@@ -59,34 +62,34 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        bottomBar.setOnTabReselectListener(new OnTabReselectListener() {
-//            @Override
-//            public void onTabReSelected(@IdRes int tabId) {
-//
-//                FragmentManager fragmentManager = getFragmentManager();
-//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//
-//                switch(tabId)
-//                {
-//                    case R.id.tab_home:
-//                        Fragment fragment = new HomeFragment();
-//                        fragmentManager.popBackStack();
-//                        fragmentTransaction.replace(R.id.fragmentContainer, fragment);
-//                        fragmentTransaction.addToBackStack(null);
-//                        fragmentTransaction.commit();
-//                        break;
-//                    case R.id.tab_recent:
-//                        fragmentManager.popBackStack();
-//                        break;
-//                    case R.id.tab_favorites:
-//                        fragmentManager.popBackStack();
-//                        break;
-//                    case R.id.tab_search:
-//                        fragmentManager.popBackStack();
-//                        break;
-//                }
-//            }
-//        });
+        bottomBar.setOnTabReselectListener(new OnTabReselectListener() {
+            @Override
+            public void onTabReSelected(@IdRes int tabId) {
+
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                switch(tabId)
+                {
+                    case R.id.tab_home:
+                        HomeFragment fragment = new HomeFragment();
+                        fragmentManager.popBackStack();
+//                        fragmentTransaction.replace(R.id.fragmentContainer, new HomeFragment());
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
+                        break;
+                    case R.id.tab_recent:
+                        fragmentManager.popBackStack();
+                        break;
+                    case R.id.tab_favorites:
+                        fragmentManager.popBackStack();
+                        break;
+                    case R.id.tab_search:
+                        fragmentManager.popBackStack();
+                        break;
+                }
+            }
+        });
     }
 
     public static Context getContext() {

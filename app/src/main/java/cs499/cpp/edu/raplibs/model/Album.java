@@ -4,7 +4,7 @@ package cs499.cpp.edu.raplibs.model;
  * Created by admin on 5/15/17.
  */
 
-public class Album {
+public class Album implements Music {
 
     private String artist;
     private int counter;

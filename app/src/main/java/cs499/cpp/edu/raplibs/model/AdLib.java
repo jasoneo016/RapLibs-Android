@@ -4,7 +4,7 @@ package cs499.cpp.edu.raplibs.model;
  * Created by admin on 5/29/17.
  */
 
-public class AdLib {
+public class AdLib implements Music {
 
     private String artist;
     private int counter;
@@ -32,26 +32,32 @@ public class AdLib {
         this.timestamp = timestamp;
     }
 
+    @Override
     public String getArtist() {
         return artist;
     }
 
+    @Override
     public void setArtist(String artist) {
         this.artist = artist;
     }
 
+    @Override
     public int getCounter() {
         return counter;
     }
 
+    @Override
     public void setCounter(int counter) {
         this.counter = counter;
     }
 
+    @Override
     public String getImage() {
         return image;
     }
 
+    @Override
     public void setImage(String image) {
         this.image = image;
     }
@@ -72,10 +78,12 @@ public class AdLib {
         this.mp3 = mp3;
     }
 
+    @Override
     public long getTimestamp() {
         return timestamp;
     }
 
+    @Override
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }

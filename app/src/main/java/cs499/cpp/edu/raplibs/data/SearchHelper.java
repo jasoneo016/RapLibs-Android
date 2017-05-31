@@ -91,7 +91,7 @@ public class SearchHelper {
                 if (!(constraint == null || constraint.length() == 0)) {
 
                     for (Artist artist : artistList) {
-                        if (artist.getName().toUpperCase()
+                        if (artist.getArtist().toUpperCase()
                                 .startsWith(constraint.toString().toUpperCase())) {
                             suggestionList.add(artist);
                         }

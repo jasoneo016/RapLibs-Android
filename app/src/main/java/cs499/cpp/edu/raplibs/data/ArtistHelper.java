@@ -64,7 +64,7 @@ public class ArtistHelper {
                 if (!(constraint == null || constraint.length() == 0)) {
 
                     for (Artist artist : artistList) {
-                        if (artist.getName().toUpperCase()
+                        if (artist.getArtist().toUpperCase()
                                 .contains(constraint.toString().toUpperCase())) {
                             suggestionList.add(artist);
                         }
@@ -87,6 +87,5 @@ public class ArtistHelper {
                 }
             }
         }.filter(query);
-
     }
 }

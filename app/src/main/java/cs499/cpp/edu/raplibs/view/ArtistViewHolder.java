@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import cs499.cpp.edu.raplibs.R;
 import cs499.cpp.edu.raplibs.helper.RoundTransform;
 import cs499.cpp.edu.raplibs.model.Artist;
 
@@ -31,7 +30,7 @@ public class ArtistViewHolder extends RecyclerView.ViewHolder {
 
     public void bindImage(Artist artist, int artistName, int artistImage) {
         TextView textViewName = (TextView) viewHolder.findViewById(artistName);
-        textViewName.setText(artist.getName());
+        textViewName.setText(artist.getArtist());
         ImageView imageView = (ImageView) viewHolder.findViewById(artistImage);
         Picasso.with(context)
                 .load(artist.getImage().replace(" ", "%20"))

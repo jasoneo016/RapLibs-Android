@@ -1,14 +1,11 @@
 package cs499.cpp.edu.raplibs.adapters;
 
 import android.app.Activity;
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.arlib.floatingsearchview.util.Util;
 import com.squareup.picasso.Picasso;
@@ -111,7 +108,7 @@ public class SearchResultsListAdapter extends RecyclerView.Adapter<SearchResults
 
         if (artistList.size() >  position) {
             Artist artist = artistList.get(position);
-            holder.searchArtistName.setText(artist.getName());
+            holder.searchArtistName.setText(artist.getArtist());
             Picasso.with(holder.context)
                     .load(artistList.get(position).getImage().replace(" ", "%20"))
                     .transform(new RoundTransform(100,1))

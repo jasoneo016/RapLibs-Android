@@ -4,7 +4,7 @@ package cs499.cpp.edu.raplibs.model;
  * Created by admin on 4/12/17.
  */
 
-public class Lyric {
+public class Lyric implements Music {
 
     private String album;
     private String artist;
