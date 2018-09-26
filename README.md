@@ -18,7 +18,8 @@
 
 ## Search capabilities
 ### Search through Artists, Albums, Lyrics, Ad Libs, and Song names.
-  
+![Imgur Image](https://jasoneo016.github.io/images/mockup/ArtistsScreen_nexus5x-portrait.png)
+
   
 # Play and Share
 ### Play the audio first to see if it reaches your expectations, and then share it with a friend!
