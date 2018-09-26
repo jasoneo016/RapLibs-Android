@@ -2,8 +2,8 @@
 
 ![Imgur Image](https://jasoneo016.github.io/images/web_hi_res_512.png)
 
-## Ever wanted to respond to your friends through text with a song lyric? Now you can! 
-## Send rapper's lyrics and ad libs as audio files directly to your friends!
+### Ever wanted to respond to your friends through text with a song lyric? Now you can! 
+### Send rapper's lyrics and ad libs as audio files directly to your friends!
 
 ![Imgur Image](http://jasoneo016.github.io/images/mockup/HomeScreen_nexus5x-portrait.png)
 
@@ -17,7 +17,7 @@
 ![Imgur Image](https://jasoneo016.github.io/images/mockup/SearchScreen_nexus5x-portrait.png)
 
 ## Search capabilities
-  * Search through Artists, Albums, Lyrics, Ad Libs, and Song names.
+  ### Search through Artists, Albums, Lyrics, Ad Libs, and Song names.
   
   
 # Play and Share
