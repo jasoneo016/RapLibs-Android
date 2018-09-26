@@ -8,12 +8,7 @@
 
 <img src="http://jasoneo016.github.io/images/mockup/HomeScreen_nexus5x-portrait.png" height="500" width="500">
 
-![Imgur Image](http://jasoneo016.github.io/images/mockup/HomeScreen_nexus5x-portrait.png)
-
-
-![Imgur Image](https://jasoneo016.github.io/images/icons/search.png)
-
-
+<img src="https://jasoneo016.github.io/images/icons/search.png" height="200" width="200">
 # Search
 ### Search amongst a smorgasbord of artists, albums, lyrics, songs, and ad libs to find the mp3 you want.
 
