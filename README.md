@@ -1,10 +1,7 @@
 # RapLibs-Android
 [Rap Libs App Landing Page](https://jasoneo016.github.io/)
 
-<img src="https://jasoneo016.github.io/images/web_hi_res_512.png" height="24" width="48">
-
-
-![Imgur Image](https://jasoneo016.github.io/images/web_hi_res_512.png)
+<img src="https://jasoneo016.github.io/images/web_hi_res_512.png" height="256" width="256">
 
 ### Ever wanted to respond to your friends through text with a song lyric? Now you can! 
 ### Send rapper's lyrics and ad libs as audio files directly to your friends!
