@@ -12,7 +12,7 @@
 
 
 # Search
-## Search amongst a smorgasbord of artists, albums, lyrics, songs, and ad libs to find the mp3 you want.
+### Search amongst a smorgasbord of artists, albums, lyrics, songs, and ad libs to find the mp3 you want.
 
 ![Imgur Image](https://jasoneo016.github.io/images/mockup/SearchScreen_nexus5x-portrait.png)
 
@@ -21,12 +21,12 @@
   
   
 # Play and Share
-## Play the audio first to see if it reaches your expectations, and then share it with a friend!
+### Play the audio first to see if it reaches your expectations, and then share it with a friend!
 
 ![Imgur Image](https://jasoneo016.github.io/images/mockup/LyricsScreen_nexus5x-portrait.png)
 
 
-## Sort by albums
+### Sort by albums
  * Recent album with lyrics that you can't get out of your head? Share it with some friends!
 
 ![Imgur Image](https://jasoneo016.github.io/images/mockup/AlbumsScreen_nexus5x-portrait.png)
