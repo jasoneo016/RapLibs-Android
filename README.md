@@ -17,7 +17,7 @@
 ![Imgur Image](https://jasoneo016.github.io/images/mockup/SearchScreen_nexus5x-portrait.png)
 
 ## Search capabilities
-  ### Search through Artists, Albums, Lyrics, Ad Libs, and Song names.
+### Search through Artists, Albums, Lyrics, Ad Libs, and Song names.
   
   
 # Play and Share
@@ -26,7 +26,7 @@
 ![Imgur Image](https://jasoneo016.github.io/images/mockup/LyricsScreen_nexus5x-portrait.png)
 
 
-### Sort by albums
- * Recent album with lyrics that you can't get out of your head? Share it with some friends!
+# Sort by albums
+### Recent album with lyrics that you can't get out of your head? Share it with some friends!
 
 ![Imgur Image](https://jasoneo016.github.io/images/mockup/AlbumsScreen_nexus5x-portrait.png)
