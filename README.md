@@ -5,7 +5,9 @@
 
 Ever wanted to respond to your friends through text with a song lyric? Now you can! 
 Send rapper's lyrics and ad libs as audio files directly to your friends!
+
 <img src="http://jasoneo016.github.io/images/mockup/HomeScreen_nexus5x-portrait.png" height="500" width="500">
+
 <img src="https://jasoneo016.github.io/images/icons/search.png" height="75" width="75">
 
 # Search
